@@ -16,154 +16,161 @@
 </style>
 
 <a id='TP2'></a>
-# TP 2 : Travailler en autonomie sur un depôt github distant 
-[Retour à la page principale](../index.md)
+# TP 2: Trabajar de forma autónoma en un repositorio GitHub remoto
+[Volver a la página principal](../index.md)
 
+Hasta ahora (en el [TP1](../tp1/index.md)), hemos estado trabajando en un repositorio local. Sin embargo, el verdadero poder de git radica en la posibilidad de trabajar con un repositorio remoto (generalmente alojado en un servidor externo), lo que ofrece las siguientes ventajas: i) tener una copia de seguridad del proyecto, ii) la capacidad de acceder al proyecto desde diferentes máquinas y iii) la posibilidad de trabajar en equipo en el mismo proyecto.
 
-Jusqu'à présent (dans le [TP1](../tp1/index.md)), nous avons travaillé sur un dépôt local. Cependant, le vrai pouvoir de git est de pouvoir travailler avec un dépôt distant (généralement hébergé sur un serveur externe), ce qui présente les avantages suivants: i) avoir une copie de sauvegarde du projet, ii) possibilité d'accéder au projet depuis différentes machines et iii) possibilité de travailler en équipe sur le même projet. 
+En este TP, trabajaremos de forma autónoma (aún no hay trabajo en equipo) en un repositorio remoto. Seguramente ya conozcas algunas de estas plataformas de gestión de proyectos, hay varias. **Las más conocidas son:**
 
-Dans ce TP, nous allons travailler de manière autonome (il n'y a toujours pas de travail d'équipe) sur un dépôt distant. Vous connaissez sûrement déjà certaines de ces plateformes de gestion de projets : il en existe plusieurs. **Les plus connues :**
+[Github](https://github.com):
+:	La plataforma más conocida. Ofrece alojamiento gratuito para proyectos. Suscripciones para más características. El código se aloja en GitHub.
 
-[Github](https://github.com) :
-:	La plateforme la plus connue. Héberge gratuitement des projets. Souscriptions pour plus de fonctionalités. Le code est hébergé chez github.
+[Bitbucket](https://bitbucket.org):
+:	Similar a GitHub. Programa para estudiantes (con correo electrónico universitario). El código se aloja en Bitbucket, propiedad de Atlassian.
 
-[Bitbucket](https://bitbucket.org) : 
-:    Similaire à github. Programme étudiant (avec l’email universitaire). Le code est hébergé par Atlasian.
-
-[Gitlab](https://about.gitlab.com/) :
-:    Similaire aux précédents dans sa version commerciale (Entreprise Edition). Une version open source (Community Edition) permet l’installation privée d’un serveur.
+[Gitlab](https://about.gitlab.com/):
+:	Similar a las anteriores en su versión comercial (Enterprise Edition). Una versión de código abierto (Community Edition) permite la instalación de un servidor privado.
 
 ---
 
-## Objectifs du TP 2
+## Objetivos del TP 2
 
-Le but de ce deuxième TP  est de commencer à travailler en autonomie (pas de travaille en équipe pour l'instant) avec un dépôt git distant. En particulier, nous travaillerons avec le système github. Dans ce TP, nous allons apprendre à : 
+El objetivo de este segundo TP es comenzar a trabajar de forma autónoma (sin trabajo en equipo por ahora) con un repositorio git remoto. En particular, trabajaremos con el sistema de GitHub. En este TP, aprenderemos a:
 
->1. [Créer un compte sur github](#github)
-2. [Ajouter une nouvelle clé SSH à votre compte GitHub](#cle)
-3. [Pousser un dépôt existant depuis la ligne de commande](#pushremote)
-4. [Séquence de travail avec un dépôt distant](#sequence)
-5. [Cloner un dépôt distant sur notre machine locale](#clone)
-   
+> 1. [Crear una cuenta en GitHub](#github).
+2. [Agregar una nueva clave SSH a tu cuenta de GitHub](#cle).
+3. [Subir un repositorio existente desde la línea de comandos](#pushremote).
+4. [Secuencia de trabajo con un repositorio remoto](#sequence).
+5. [Clonar un repositorio remoto en nuestra máquina local](#clone).
 
-[Haut de la page](#TP2)
+[Arriba de la página](#TP2)
+
 
 ---
 
 <a id='github'></a>
-## 1. Créer un compte sur github 
+## 1. Crear una cuenta en GitHub
 
-Peut-être que certains d'entre vous avez déjà un compte github. Si tel est le cas, vous pouvez ignorer cette première étape. Sinon, créer un compte sur github est simple : 
+Es posible que algunos de ustedes ya tengan una cuenta en GitHub. Si es así, pueden omitir este primer paso. De lo contrario, crear una cuenta en GitHub es sencillo:
 
-1. Vous devez aller sur [github](https://github.com) et cliquer sur **sign up** pour vous insrire : 
-![Signup github](./images/signup.png)
-2. Ensuite, vous devez remplir les champs suivants du formulaire. Prenez quelques minutes pour créer votre compte. 
+1. Deben ir a [GitHub](https://github.com) y hacer clic en **Sign up** para registrarse:
 
-![Create github account](./images/createaccount.png)
+   ![Registrarse en GitHub](./images/signup.png)
+
+2. Luego, deben completar los campos del formulario a continuación. Tómense unos minutos para crear su cuenta:
+
+   ![Crear una cuenta en GitHub](./images/createaccount.png)
+
 
 ---
 <a id='cle'></a>
-## 2. Ajouter une nouvelle clé SSH à votre compte GitHub 
+## 2. Agregar una nueva clave SSH a tu cuenta de GitHub
 
-Pour des raisons de sécurité, GitHub base ses connexions sur un système de clé publique/privée. Cette section vous permet de configurer ces clés sur github. 
+Por razones de seguridad, GitHub se basa en un sistema de clave pública/privada para las conexiones. Esta sección te permite configurar estas claves en GitHub.
 
-- Copiez la clé publique SSH de votre machine dans votre presse-papiers. 
+- Copia la clave pública SSH de tu máquina en tu portapapeles.
 
 ```shell
 $ cat ~/.ssh/id_rsa.pub
-# Sélectionnez ensuite et copiez le contenu du fichier id_rsa.pub 
-# affiché dans le terminal dans votre presse-papiers 
+# Luego, selecciona y copia el contenido del archivo id_rsa.pub
+# que se muestra en la terminal a tu portapapeles
 ```
 
 <div class="note">
-<p><strong>Attention : </strong>  la clé publique est celle qui se termine par .pub, ne partagez jamais votre clé privée.</p>
+<p><strong>Atención:</strong> La clave pública es la que termina en .pub, nunca compartas tu clave privada.</p>
 
-<p> Le fichier id_rsa.pub est le nom par défaut, mais peut-être que votre fichier est nommé différemment, par exemple identifiant.pub ou autrement </p>
+<p>El archivo id_rsa.pub es el nombre predeterminado, pero es posible que tu archivo tenga un nombre diferente, como identificador.pub u otro.</p>
 
-<p> Si vous n'avez pas de paire de clés publique/privée dans votre repertoire .ssh, la commande <code>ssh-keygen</code> permet de générer une paire de clés publique/privée rsa. </p>
+<p>Si no tienes un par de claves pública/privada en tu directorio .ssh, el comando <code>ssh-keygen</code> permite generar un par de claves pública/privada RSA.</p>
 </div>
 
-- Dans le coin supérieur droit, cliquez sur votre photo de profil, puis sur Settings.
+- En la esquina superior derecha, haz clic en tu foto de perfil y luego en Configuración.
 
- ![Settings](./images/settings.png)
- 
-- Dans la section "Accès" de la barre latérale, cliquez sur **SSH and GPG keys**
+  ![Configuración](./images/settings.png)
 
-- Cliquez sur **Nouvelle clé SSH** ou sur **Ajouter une clé SSH**
+- En la sección "Acceso" de la barra lateral, haz clic en **Claves SSH y GPG**.
 
--  Dans le champ "Titre", ajoutez une étiquette descriptive pour la nouvelle clé. Par exemple, si vous utilisez une machine à l'IUT, vous pouvez appeler cette clé "Machine IUT"
+- Haz clic en **Nueva clave SSH** o en **Agregar clave SSH**.
 
-- Collez votre clé dans le champ "Clé"
+- En el campo "Título", agrega una etiqueta descriptiva para la nueva clave. Por ejemplo, si estás utilizando tu portatil lenovo, puedes llamar a esta clave "Mi portatil lenovo".
 
-- Cliquez sur "Ajouter la clé SSH". 
+- Pega tu clave en el campo "Clave".
 
-- Si demandé, confirmez votre mot de passe GitHub. 
+- Haz clic en "Agregar clave SSH".
 
-- Vous pouvez répéter ce processus pour autant de machines que vous allez utiliser. 
+- Si se te pide, confirma tu contraseña de GitHub.
 
-[Haut de la page](#TP2)
+- Puedes repetir este proceso para todas las máquinas que vayas a utilizar.
+
+[Arriba de la página](#TP2)
 
 -----
 
 <a id='pushremote'></a>
-## 3. Pousser un dépôt existant depuis la ligne de commande 
+## 3. Subir un repositorio existente desde la línea de comandos
 
-Jusqu'à présent, nous avons travaillé sur le dépôt git local `tp1`, il est temps de sauvegarder ce dépôt sur github. Pour ce faire, nous allons suivre une description qui montre comment le faire étape par étape. Mais tout d'abord, il est pratique de faire une brève introduction de trois commandes dans git qui nous aideront à gérer notre répertoire distant à partir de notre répertoire local sur la ligne de commande. 
+Hasta ahora, hemos estado trabajando en el repositorio git local `tp1`, es hora de respaldar este repositorio en GitHub. Para hacerlo, seguiremos una descripción que muestra cómo hacerlo paso a paso. Pero primero, es conveniente hacer una breve introducción a tres comandos en git que nos ayudarán a administrar nuestro repositorio remoto desde nuestro repositorio local en la línea de comandos.
 
-* `git remote` :
-: cette commande sert à gérer (ajouter) des dépôts distants ("remotes"). En d'autres termes, nous utiliserons cette commande pour créer un lien entre notre dépôt local `tp1` et celui distant que nous allons créer dans github. 
+* `git remote`:
+: Este comando se utiliza para gestionar (agregar) repositorios remotos ("remotes"). En otras palabras, utilizaremos este comando para crear un enlace entre nuestro repositorio local `tp1` y el repositorio remoto que crearemos en GitHub.
 
-* `git push` :
-: cette commande permet de mettre à jour le dépôt distant (e.g. github) à partir de la dernière version validée (_commit)_ de notre dépôt local. 
+* `git push`:
+: Este comando permite actualizar el repositorio remoto (por ejemplo, GitHub) a partir de la última versión validada (_commit_) de nuestro repositorio local.
 
-* `git pull` :
-: cette commande sert à mettre à jour notre dépot local à partir de la dernière version de notre dépôt distant. 
+* `git pull`:
+: Este comando se utiliza para actualizar nuestro repositorio local a partir de la última versión de nuestro repositorio remoto.
 
-**Êtes-vous prêts ? Allons commencer à travailler avec github !!** La première tâche sera de sauvegarder une copie de notre répertoire local `tp1` sur github. 
+**¿Estás listo? ¡Vamos a empezar a trabajar con GitHub!** La primera tarea será respaldar una copia de nuestro repositorio local `tp1` en GitHub.
 
-* Allez jusqu'au répertoire tp1, de sorte que la commande `pwd` affiche le résultat suivant :
+* Ve al directorio tp1, de modo que el comando `pwd` muestre el siguiente resultado:
+
 
 ```shell
 $:> pwd
-/.../courseGIT/tp1 
+/.../cursoGIT/tp1 
 ```
 
-* Sur le site Web de github, allez en haut à droite et cliquez sur **New repository** comme indiqué dans l'image :
+* En el sitio web de GitHub, ve arriba a la derecha y haz clic en **New repository** como se muestra en la imagen:
 
-![New repository github](./images/clicknewrepo.png)
+  ![Nuevo repositorio en GitHub](./images/clicknewrepo.png)
 
-* Dans le formulaire, tapez **tp1** sous **Repository name** et laissez le reste des champs vides (comme indiqué dans l'image). Vous pouvez choisir que votre dépôt `tp1` soit public ou privé. 
+* En el formulario, escribe **tp1** en **Nombre del repositorio** y deja los demás campos en blanco (como se muestra en la imagen). Puedes elegir si tu repositorio `tp1` será público o privado.
 
-![Create empty repository github](./images/createemptyrepo.png)
+  ![Crear repositorio vacío en GitHub](./images/createemptyrepo.png)
 
-* Vous venez de créer un dépôt vide dont le lien `https://github.com/<votre_utilisateur>/tp1.git` sera affiché comme dans l'image ci-dessous. 
+* Acabas de crear un repositorio vacío cuyo enlace `https://github.com/<tu_usuario>/tp1.git` se mostrará como en la imagen a continuación.
 
-![Information empty repository](./images/emptyrepo.png)
+  ![Información del repositorio vacío](./images/emptyrepo.png)
 
-* Tapez dans la console la ligne suivante pour vérifier que votre dépôt local `tp1` n'est pas encore lié à un dépôt distant. La réponse de cette commande ne doit rien afficher. 
+* Escribe en la consola la siguiente línea para verificar que tu repositorio local `tp1` aún no está vinculado a un repositorio remoto. La respuesta de este comando no debe mostrar nada.
+
 
 ```shell
-$:~/courseGIT/tp1> git remote -v
+$:~/cursoGIT/tp1> git remote -v
 ```
 
-* Maintenant, nous allons lier notre dépôt local `tp1` au répertoire distant `git@github.com:<votre_utilisateur>/tp1.git` pour ce faire, écrivez la commande suivante en remplaçant `<votre_utilisateur>` par votre utilisateur. 
+* Ahora vamos a vincular nuestro repositorio local `tp1` al repositorio remoto `git@github.com:<tu_usuario>/tp1.git`. Para hacerlo, escribe el siguiente comando siguiente, reemplazando `<tu_usuario>` por tu nombre de usuario de GitHub.
 
 ```shell
-$:~/courseGIT/tp1> git remote add origin git@github.com:<votre_utilisateur>/tp1.git
+$:~/cursoGIT/tp1> git remote add origin git@github.com:<tu_usuario>/tp1.git
 ```
-* Jusqu'à présent, nous n'avons pas examiné le concept de branche dans git, et nous n'entrerons pas dans le détail avant la prochaine séance. Cependant, il faut savoir que toutes les versions que nous sauvegardons avec les différentes _commits_ sont stockées dans une branche. Normalement cette branche s'appellera **master** ou **main**. Pour finir d'établir le lien entre le dépôt local et distant, nous aurons besoin de connaître le nom de cette branche. Pour ce faire, tapez la commande suivante : 
+
+* Hasta ahora, no hemos explorado el concepto de ramas en Git y no entraremos en detalles hasta el próximo TP. Sin embargo, es importante saber que todas las versiones que guardamos con diferentes _commits_ se almacenan en una rama. Normalmente, esta rama se llamará **master** o **main**. Para finalizar la configuración de la conexión entre el repositorio local y remoto, necesitaremos conocer el nombre de esta rama. Para hacerlo, escribe el siguiente comando:
+
 
 ```shell
-$:~/courseGIT/tp1> git branch
-*master
+$:~/cursoGIT/tp1> git branch
+*main
 ```
-* Il ne reste plus qu'à créer le lien de manière permanente et mettre à jour le dépôt distant. Pour ce faire, écrivons la commande suivante: 
+
+* Ahora solo falta crear el enlace de forma permanente y actualizar el repositorio remoto. Para hacerlo, escribamos el siguiente comando:
 
 ```shell
-$:~/courseGIT/tp1> git push -u origin master
+$:~/cursoGIT/tp1> git push -u origin main
 ```
 
-* Alors que la commande `git push` essaie d'écrire dans le dépôt distant, vous devriez voir des messages similaires à :
+* Mientras que el comando `git push` intenta escribir en el repositorio remoto, deberías ver mensajes similares a:
 
 ```shell
 Counting objects: 19, done.
@@ -175,124 +182,120 @@ To https://github.com/juanluck/tp1.git
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ```
-* **Félicitations !!** les deux dépôts, local et distant, sont maintenant synchronisés. Allez sur le site de votre projet `https://github.com/<votre_utilisateur>/tp1` et voir les résultats. **N'est-ce pas cool ?**
+* **¡Felicidades!** Ahora los dos repositorios, local y remoto, están sincronizados. Ve al sitio de tu proyecto `https://github.com/<tu_usuario>/tp1` y comprueba los resultados. **¿No es genial?**
 
-[Haut de la page](#TP2)
+[Arriba de la página](#TP2)
 
 -----
 
 <a id='sequence'></a>
-## 4. Séquence de travail avec un dépôt distant 
+## 4. Secuencia de trabajo con un repositorio remoto
 
-Dans le [tp1](../tp1/index.md), nous avons vu comment établir une séquence de travail simple dans un répertoire local pour enregistrer la trace des différentes versions de notre projet à l'aide de la séquence de commandes suivant : `git status` -> `git add fichier` -> `git commit -m "message"` -> `git status` -> `git add fichier` -> `...`
+En el [tp1](../tp1/index.md), aprendimos cómo establecer una secuencia de trabajo sencilla en un directorio local para rastrear las diferentes versiones de nuestro proyecto utilizando la siguiente secuencia de comandos: `git status` -> `git add archivo` -> `git commit -m "mensaje"` -> `git status` -> `git add archivo` -> `...`
 
-Une fois que le lien entre notre dépôt local et distant a été établi, nous allons introduire les commandes `git pull` et` git push` dans cette séquence et ainsi pouvoir synchroniser le _commit_ local avec le dépôt distant . En bref, cette séquence se compose des commandes suivantes :
+Una vez que se ha establecido la conexión entre nuestro repositorio local y el repositorio remoto, introduciremos los comandos `git pull` y `git push` en esta secuencia y podremos sincronizar el _commit_ local con el repositorio remoto. En resumen, esta secuencia consta de los siguientes comandos:
 
-
-
-* Tout d'abord, nous allons _puller_ (télécharger et synchroniser) la version la plus récente du dépôt distant vers notre dépôt local :
+* En primer lugar, realizaremos un _pull_ (descargar y sincronizar) la versión más reciente del repositorio remoto con nuestro repositorio local:
 
 ```shell
-$:~/courseGIT/tp1> git pull
+$:~/cursoGIT/tp1> git pull
 ```
 
-* **(Optionnel )** Nous pouvons voir les modifications les plus récentes (écrites par nous ou un collègue) si nous tapons :
+* **(Opcional)** Podemos ver las modificaciones más recientes (realizadas por nosotros o un colega) si escribimos:
 
 ```shell
-$:~/courseGIT/tp1> git log
+$:~/cursoGIT/tp1> git log
 ```
 
-* Une fois que nous avons la version la plus récente, nous pouvons commencer à introduire des modifications dans nos fichiers locaux et effectuer la séquence que nous connaissons déjà pour enregistrer la nouvelle version dans notre référentiel local :
+* Una vez que tenemos la versión más reciente, podemos comenzar a introducir cambios en nuestros archivos locales y llevar a cabo la secuencia que ya conocemos para registrar la nueva versión en nuestro repositorio local:
 
 ```shell
-$:~/courseGIT/tp1> git status
-$:~/courseGIT/tp1> git add .
-$:~/courseGIT/tp1> git commit -m "Message pour le log"
+$:~/cursoGIT/tp1> git status
+$:~/cursoGIT/tp1> git add <archivos>
+$:~/cursoGIT/tp1> git commit -m "Mensaje para el log"
 ```
 
-* Finalement, une fois que notre référentiel local a la bonne version, il suffit de le synchroniser (_pusher_) avec le dépôt distant avec la commande : 
+* Finalmente, una vez que nuestro repositorio local tiene la versión correcta, simplemente debemos sincronizarlo (_hacer push_) con el repositorio remoto utilizando el comando:
 
 ```shell
-$:~/courseGIT/tp1> git push
+$:~/cursoGIT/tp1> git push
 ```
  
-### Exercice
->1. Modifiez le fichier Cryptomonnaie.java avec le code ci-dessous. Pour synchroniser correctement les dépôts, commencez par faire un `git pull` ->` git log`, puis modifiez le fichier pour ensuite continuez avec la sequence `git status` ->` git add Cryptomonnaie.java` -> `git commit -m" Ajout de getters et setters "` - > `git push`. Vérifiez que le référentiel github a été mis à jour. 
+### Ejercicio
+> 1. Modifica el archivo Criptomoneda.java con el siguiente código. Para sincronizar los repositorios correctamente, comienza con un `git pull` -> `git log`, luego modifica el archivo y continúa con la secuencia `git status` -> `git add Criptomoneda.java` -> `git commit -m" Agregar getters y setters "` - > `git push`. Verifica que el repositorio de GitHub se haya actualizado.
 
 ```java
-public class Cryptomonnaie{
-    private String nom;
-    private double valeurDeJeton; // Imaginons en euros
+public class Criptomoneda{
+    private String nombre;
+    private double valorDeToken; // Imaginemos en euros
 
-    public Cryptomonnaie(String nom, double valeurDeJeton){
-        this.nom = nom;
-        this.valeurDeJeton = valeurDeJeton;
+    public Criptomoneda(String nombre, double valorDeToken){
+        this.nombre = nombre;
+        this.valorDeToken = valorDeToken;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNombre() {
+        return nombre;
     }
 
-    public double getValeurDeJeton() {
-        return valeurDeJeton;
+    public double getValorDeToken() {
+        return valorDeToken;
     }
 
     @Override
     public String toString() {
-        return String.format("%5s",nom) + ":" + String.format("%10.1f",valeurDeJeton);
+        return String.format("%5s",nombre) + ":" + String.format("%10.1f",valorDeToken);
     }
 }
 ```
 
-[Haut de la page](#TP2)
+[Arriba de la página](#TP2)
 
 -----
 <a id='clone'></a>
-## 5. Cloner un dépôt distant sur notre machine locale 
+## 5. Clonar un repositorio remoto en nuestra máquina local
 
-Dans la [section 3](#pushremote), nous avons appris à initialiser un dépôt localement (avec `git init`) et puis à le synchroniser avec un répertoire distant. Cependant, la plupart du temps, nous allons utiliser un **mécanisme beaucoup plus simple** pour relier les deux dépôts : **le clone**. Pour apprendre ce mécanisme, nous allons créer un nouveau dépôt sur github que nous appellerons `tp2` (**au revoir tp1 !**). 
+En la [sección 3](#pushremote), aprendimos a inicializar un repositorio localmente (con `git init`) y luego sincronizarlo con un repositorio remoto. Sin embargo, en la mayoría de los casos, utilizaremos un **método mucho más sencillo** para vincular los dos repositorios: **la clonación**. Para aprender este proceso, crearemos un nuevo repositorio en GitHub que llamaremos `tp2` (**adiós tp1**).
 
 <div class="note">
-	<strong>NOTE : </strong> Lorsque vous aurez un peu plus d'expérience, vous verrez à quel point le clonage d'un dépôt distant est la méthode de travail la plus courante et la plus simple. Dans cet exercice, nous reproduisons ce workflow. 
+	<strong>NOTA:</strong> Cuando adquiera más experiencia, verá lo común y sencillo que es el clonar un repositorio remoto. En este ejercicio, estamos reproduciendo este flujo de trabajo.
 </div>
 
-* Allons directement sur github pour créer un nouveau répertoire `tp2` en suivant le formulaire ci-dessous :
+* Vamos directamente a GitHub para crear un nuevo repositorio `tp2` siguiendo el formulario a continuación:
 
-![Create repository tp2 in github](./images/createRepoTp2.png)
+![Crear repositorio tp2 en GitHub](./images/createRepoTp2.png)
 
+* Acabas de crear un nuevo repositorio `tp2`. Para obtener el enlace para clonarlo, haz clic en <mark style="background-color:green;color:white">Code</mark> como se muestra en la siguiente imagen:
 
-* Vous venez de créer un nouveau dépôt `tp2`. Pour obtenir le lien pour le cloner, cliquez sur <mark style="background-color:green;color:white">Code</mark> comme indiqué dans l'image suivante :
+![Información de clonación de tp2 en GitHub](./images/cloneInfoTp2.png)
 
-![Clone info tp2 in github](./images/cloneInfoTp2.png)
+* Ahora, simplemente ve al directorio del cursoGIT:
 
-* Maintenant, il suffit d'aller dans le répertoire courseGIT :
 
 ```shell
-$:~/courseGIT> ls
+$:~/cursoGIT> ls
 tp1
 ```
 
-* et d'écrire la commande suivante :
+* y escribe el comando siguiente:
 
 ```shell
-$:~/courseGIT> git clone git@github.com:<votre_utilisateur>/tp2.git
+$:~/cursoGIT> git clone git@github.com:<votre_utilisateur>/tp2.git
 ```
 
-* Si nous écrivons maintenant la commande `ls`, nous verrons qu'un nouveau répertoire `tp2` a été créé. Ce répertoire contient un dépôt local qui est déjà lié et synchronisé avec le dépôt distant sur github _(contrairement à la [section 2.](#pushremote), nous n'aurons pas besoin de configurer le lien avec `git remote` ni avec `git push -u origin master`. Si facile !.)_ 
+* Si escribimos ahora el comando `ls`, veremos que se ha creado un nuevo directorio `tp2`. Este directorio contiene un repositorio local que ya está vinculado y sincronizado con el repositorio remoto en GitHub _(a diferencia de la [sección 2](#pushremote), no necesitaremos configurar la conexión con `git remote` ni con `git push -u origin master`. ¡Así de sencillo!)._
 
 ```shell
-$:~/courseGIT> ls
+$:~/cursoGIT> ls
 tp1 tp2
 ```
-### Exercices
->1. Allez dans le répertoire `tp2` et mettez à jour tous les fichiers avec ceux du répertoire `tp1` (README.md et src/Cryptomonnaie.java) (surtout ne copiez pas le répertoire caché .git).
-2.  En utilisant [la séquence](#sequence) que nous avons apprise, synchronisez les dépôts local et distant. 
+### Ejercicios
+> 1. Ve al directorio `tp2` y actualiza todos los archivos con los del directorio `tp1` (README.md y src/Criptomoneda.java) (asegúrate de no copiar el directorio oculto .git).
+2. Utilizando [la secuencia](#sequence) que hemos aprendido, sincroniza los repositorios local y remoto.
 
+[Regresar al inicio de la página](#TP2)
 
- 
-
-[Haut de la page](#TP2)
 
 -----
 
-**Fin du TP 2**
+**Fin del TP2**
