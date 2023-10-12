@@ -20,47 +20,7 @@ Específicamente, necesitaremos:
 
 [^1]: La máquina virtual Java no es necesaria para Git, sino para los ejercicios propuestos.
 
-## Travaux pratiques 
-
-Ce cours d'[introduction à la gestion des versions à l'aide de GIT](#introduction_main)  est divisé en quatre séances pratiques :
-
->* [TP 1 : Travailler sur un répertoire local ](./tp1/index.md)
->* [TP 2 : Travailler en autonomie sur un depôt github distant ](./tp2/index.md) 
->* [TP 3 : Travailler en équipe sur un depôt github distant ](./tp3/index.md)
->* [TP 4 : Résolution de conflits et pull request ](./tp4/index.md)
->* [TP 5 : Comment créer un site Web sur GitHub pages ](./tp5/index.md)
-
-## Liens d'aide pour le cours 
-
-### [Feuille de triche git](https://education.github.com/git-cheat-sheet-education.pdf)
-
-### [Feuille de triche markdown](https://www.markdownguide.org/cheat-sheet)
-
-
-
-Markdown est une syntaxe légère et facile à utiliser pour créer du texte formaté à l'aide d'un éditeur de texte. Il est couramment utilisé dans git, entre autres, pour créer des documents tels que des fichiers README ou pour déployer facilement des documents tels que [ce site web](#introduction_main) qui est écrit en utilisant markdown et [github pages](https://pages.github.com/). Vous pouvez trouver ci-dessous les principales conventions pour la syntaxe.
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-Pour plus de détails consultez [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-## Trabajos prácticos
+## Trabajos Prácticos (TPs)
 
 Este curso de [introducción a la gestión de versiones con GIT](#introduction_main) se divide en cuatro sesiones prácticas:
 
