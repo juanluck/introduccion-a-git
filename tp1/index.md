@@ -1,34 +1,35 @@
 <a id='TP1'></a>
-# TP 1 : Travailler sur un répertoire local 
-[Retour à la page principale](../index.md)
+# TP 1: Trabajar en un repositorio local
+[Volver a la página principal](../index.md)
 
-Pour notre premier contact avec git, nous n'aurons besoin que d'un éditeur de texte et d'une installation fonctionnelle de git sur la console. Il ne sera pas nécessaire d'avoir un dépôt distant (comme github) parce que nous ferons tout le travail sur un répertoire locale de la machine. Dans la dernière partie de ce TP, nous commencerons à gérer un petit programme Java, il est donc également pratique d'avoir une machine virtuelle Java installée. Ce travail pratique suppose que nous travaillons sous linux bien qu'il ne devrait y avoir aucun problème à le faire sur d'autres plates-formes. 
- 
-## Objectifs du TP 1
+Para nuestro primer contacto con Git, solo necesitaremos un editor de texto y una instalación funcional de Git en la consola. No será necesario tener un repositorio remoto (como GitHub) porque realizaremos todo el trabajo en un directorio local de la máquina. En la última parte de este TP, comenzaremos a gestionar un pequeño programa Java, por lo que también es práctico tener una máquina virtual Java instalada. Este trabajo práctico asume que estamos trabajando en Linux, aunque no debería haber ningún problema en hacerlo en otras plataformas.
 
-Le but de ce premier TP est de commencer à se familiariser avec git. Plus précisément, nous allons apprendre: 
+## Objetivos del TP 1
 
->1. [Configuration de GIT (`git config`)](#configuration)
-2. [Création d'un dépôt git sur une machine locale (`git init` et `git status`)](#gitinit)
-3. [Création d'un fichier texte README.md](#readme)
-   * [Gérer les différentes modifications du fichier README.md](#readmeModifications)
-   * [Différencier  3 états / 3 zones / 3 actions](#readmeEtatsZonesActions)
-4. [Gestion de version d'un programme Java](#programmeJava)
-   * [Creation du fichier `.gitignore`](#gitignore)
+El objetivo de este primer TP es familiarizarse con Git. Más específicamente, aprenderemos:
+
+> 1. [Configuración de GIT (`git config`)](#configuration)
+2. [Creación de un repositorio Git en una máquina local (`git init` y `git status`)](#gitinit)
+3. [Creación de un archivo de texto README.md](#readme)
+   * [Gestión de diferentes modificaciones en el archivo README.md](#readmeModifications)
+   * [Diferenciar 3 estados / 3 áreas / 3 acciones](#readmeEtatsZonesActions)
+4. [Gestión de versiones de un programa Java](#programmeJava)
+   * [Creación del archivo `.gitignore`](#gitignore)
 
 ---
 
 <a id='configuration'></a>
-## 1. Configuration de GIT 
+## 1. Configuración de GIT
 
-Git est livré avec un outil appelé `git config` qui vous permet d'obtenir et de définir des variables de configuration qui contrôlent tous les aspects de l'apparence et du fonctionnement de git. 
+Git viene con una herramienta llamada `git config` que le permite obtener y definir variables de configuración que controlan todos los aspectos de la apariencia y el funcionamiento de git.
 
-Pour vérifier les paramètres de configuration actuels de git sur votre machine, ouvrez un terminal et tapez : 
+Para verificar la configuración actual de git en su máquina, abra una terminal y escriba:
 
 ```shell
 $:> git config --list
 ```
-ce qui devrait afficher des informations similaires à ce qui suit :
+
+lo que debería mostrar información similar a la siguiente:
 
 ```shell
 user.name=...
@@ -41,82 +42,87 @@ push.default=matching
 merge.tool=...
 ```
 
-### 1.1. Votre identité
+### 1.1. Tu Identidad
 
-La première chose à faire lorsque vous installez git est de définir votre nom d'utilisateur et votre adresse e-mail. Ceci est important car chaque commit git utilise ces informations, et elles sont immuablement intégrées dans les commits que vous commencez à créer: 
+Lo primero que debes hacer al instalar git es definir tu nombre de usuario y tu dirección de correo electrónico. Esto es importante porque cada confirmación de git utiliza esta información y se incorpora de forma inmutable en las confirmaciones que comiences a crear:
 
 ```shell
 $:> git config --global user.name "John Doe"
 $:> git config --global user.email johndoe@example.com
 ```
-Vous ne devez le faire qu'une seule fois si vous passez l'option `--global`, car alors git utilisera toujours ces informations pour tout ce que vous faites sur ce système.
 
-### 1.2. Votre editeur
+Solo necesitas hacerlo una vez si usas la opción --global, ya que git utilizará siempre esta información para todo lo que hagas en este sistema.
 
-Maintenant que votre identité est configurée, vous pouvez configurer l'éditeur de texte par défaut qui sera utilisé lorsque git a besoin de vous pour taper un message :
+### 1.2. Tu Editor
+
+Ahora que tu identidad está configurada, puedes configurar el editor de texto por defecto que se utilizará cuando git necesite que escribas un mensaje:
 
 ```shell
 $:> git config --global core.editor XXXX
 ```
-où **XXXX** correspond au nom de votre éditeur de texte préféré, par exemple, vim, emacs, gedit, ... 
 
-<!--### 1.3. Votre nom de branch par défaut
+donde **XXXX** corresponde al nombre de tu editor de texto preferido, por ejemplo, vim, emacs, gedit, ... 
 
-Par défaut, git créera une branche appelée `master` lorsque vous créez un nouveau dépôt avec `git init` (nous allons voir les branches et la création d'un dépôt plus tard). À partir de la version 2.28 de git, vous pouvez définir un nom différent pour la branche initiale.
+<!--### 1.3. Tu Nombre de Rama por Defecto
 
-Pour définir `main` comme nom de branche par défaut, procédez comme suit : 
+Por defecto, git creará una rama llamada `master` cuando creas un nuevo repositorio con `git init` (veremos las ramas y la creación de un repositorio más adelante). A partir de la versión 2.28 de git, puedes establecer un nombre diferente para la rama inicial.
+
+Para establecer `main` como nombre de rama por defecto, sigue estos pasos:
 
 ```shell
 $:> git config --global init.defaultBranch main
 ```
 -->
 
-### Exercices
-> 1. Suivez les étapes précédentes et configurez votre nom, votre adresse e-mail et votre éditeur de texte dans git. 
-2. Tapez la commande `git config --list` et assurez-vous que toutes les informations fournis sont correctes.
-3. Afin de vérifier que votre nom est correct, tapez  `git config user.name`
-4. Faire pareil pour votre email, tapez  `git config user.email`
+### Ejercicios
+> 1. Siga los pasos anteriores y configure su nombre, dirección de correo electrónico y editor de texto en git.
+2. Ejecute el comando `git config --list` y asegúrese de que toda la información proporcionada sea correcta.
+3. Para verificar que su nombre es correcto, ejecute `git config user.name`.
+4. Haga lo mismo para su dirección de correo electrónico, ejecute `git config user.email`.
 
-[Haut de la page](#TP1)
-
+[Arriba de la página](#TP1)
 --------
 
 <a id='gitinit'></a>
-## 2. Création d'un dépôt git sur une machine locale
+## 2. Creación de un Repositorio Git en una Máquina Local
 
-Une fois git correctement configuré, nous allons procéder sans plus tarder à créer notre premier répertoire dont nous allons gérer les changements à l'aide de git. La première chose que nous allons décider est la structure de répertoires que nous allons utiliser pour ce cours. 
+Una vez que git esté configurado correctamente, procederemos a crear nuestro primer repositorio que gestionaremos con git. Lo primero que decidiremos es la estructura de directorios que utilizaremos para este curso.
 
-Accédez à votre répertoire de travail (quel qu'il soit) et créez un répertoire `courseGIT` puis le répertoire `tp1`, de sorte que la structure du répertoire soit la suivante: 
+Accede a tu directorio de trabajo (cualquiera que sea) y crea un directorio llamado `cursoGIT` y luego el directorio `tp1`, de modo que la estructura del directorio sea la siguiente:
 
 ```shell
-$:> tree courseGIT
-courseGIT/
+$:> tree cursoGIT
+cursoGIT/
 └── tp1
 ```
-Allez jusqu'au répertoire tp1, de sorte que la commande `pwd` affiche le résultat suivant :
+
+Ve al directorio `tp1` de manera que el comando `pwd` muestre el siguiente resultado:
 
 ```shell
 $:> pwd
-/.../courseGIT/tp1 
+/.../cursoGIT/tp1 
 ```
 
-Tapez la commande `ls -a` et voir que le résultat est le suivant :
+Ejecuta el comando `ls -a` y verifica que el resultado sea el siguiente:
 
 ```shell
 $:> ls -a
 . ..
 ```
 
-**Prêt à créer votre premier dépôt git ?** Tapez :
+**¿Listo para crear tu primer repositorio git?** Escribe:
+
 ```shell
 $:> git init
 ```
-Vous devriez obtenir une réponse de type :
+
+Deberías obtener una respuesta de tipo:
 
 ```shell
-Initialized empty Git repository in /.../courseGIT/tp1/.git/
+Initialized empty Git repository in /.../cursoGIT/tp1/.git/
 ```
-Ce message indique que votre répertoire `tp1` sera désormais géré par git. En particulier, le répertoire `.git` (qui est caché) contiendra la base de données avec toutes les modifications que nous apportons au répertoire `tp1`. **Attention :** nous n'accéderons jamais directement au répertoire `.git` mais via des commandes git. Pour vérifier que le répertoire existe : 
+
+Este mensaje indica que tu directorio `tp1` será gestionado por git a partir de ahora. En particular, el directorio `.git` (que está oculto) contendrá la base de datos con todas las modificaciones que realizamos en el directorio `tp1`. **Atención:** nunca accederemos directamente al directorio `.git`, sino a través de comandos git. Para verificar que el directorio existe:
 
 ```shell
 $:> ls -a
@@ -124,9 +130,9 @@ $:> ls -a
 ```
 
 <a id='gitstatus'></a>
-### 2.1. La commande `git status`
+### 2.1. El Comando `git status`
 
-La commande `git status` nous permet de vérifier les modifications apportées aux fichiers dans la copie de travail `tp1` (_working directory_). Pour l'instant, on n'a rien changé dans le repositoire `tp1` et la commande `git status` devrait afficher le message suivant :
+El comando `git status` nos permite verificar las modificaciones realizadas en los archivos en la copia de trabajo `tp1` (_working directory_). Hasta el momento, no hemos cambiado nada en el repositorio `tp1` y el comando `git status` debería mostrar el siguiente mensaje:
 
 ```shell
 $:> git status
@@ -138,42 +144,42 @@ nothing to commit (create/copy files and use "git add" to track)
 ```
 
 
-### Exercices
-> 1. Suivez les étapes précédentes et assurez-vous que le répertoire `.git` a été bien crée.
-2. Tapez la commande `git status` dans le repertoire `tp1` et vérifier qu'elle affiche bien le message montre dans la [section 2.1](#gitstatus).
+### Ejercicios
+> 1. Sigue los pasos anteriores y asegúrate de que el directorio `.git` haya sido creado correctamente.
+2. Ejecuta el comando `git status` en el directorio `tp1` y verifica que muestre el mensaje mostrado en la [sección 2.1](#gitstatus).
 
-**Félicitations, vous venez de créer votre premier dépôt git !!**
+**¡Felicidades, acabas de crear tu primer repositorio git!**
 
-[Haut de la page](#TP1)
-
+[Arriba de la página](#TP1)
 --------
 
+
 <a id='readme'></a>
-## 3. Création d'un fichier texte README.md 
+## 3. Creación de un Archivo de Texto README.md
 
-Nous allons créer maintenant un fichier texte README.md (au format [markdown](https://www.markdownguide.org/cheat-sheet)) dans le repertoire `tp1` où nous allons enregistrer un compte-rendu de ce cours. Le fichier README.md est devenu un _standard de facto_ dans git et on vous encourage a créer un pour chaque projet git que vous démarrez.
+Ahora vamos a crear un archivo de texto README.md (en formato [markdown](https://www.markdownguide.org/cheat-sheet)) en el directorio `tp1`, donde registraremos un informe de este curso. El archivo README.md se ha convertido en un _estándar de facto_ en git, y se recomienda crear uno para cada proyecto git que inicies.
 
-Utilisez votre éditeur de texte préféré pour cela et commencez à éditer le fichier avec ces informations :
+Usa tu editor de texto preferido para hacerlo y comienza a editar el archivo con esta información:
 
 ```markdown
-**Nom :** Votre nom
+**Nombre:** Tu nombre
 
-**Groupe :** Votre groupe
+**Grupo:** Tu grupo
 
-**Année :**
+**Año:** Curso escolar
 
-**IUT Le Havre - Cours GIT**
+### Informe TP1 Introducción a GIT
 
-### Compte-rendu TP1 Introduction GIT
-
-Dans ce TP on apprend à travailler avec git.
+En este TP aprendemos a trabajar con git.
 ```
-**Assurez-vous d'enregistrer le fichier README.md avant de continuer.**
+
+Asegúrate de guardar el archivo README.md antes de continuar.
+
 
 <a id='readmeModifications'></a>
-#### 3.1. Gérer les différentes modifications du fichier README.md
+#### 3.1. Gestionar las Diferentes Modificaciones del Archivo README.md
 
-Dans la [section 2.1](#gitstatus), nous avons appris que la commande `git status` est utilisée pour afficher les modifications apportées aux fichiers dans la copie de travail `tp1`. Après les modifications que nous venons d'apporter au fichier README.md, la commande devrait afficher le message suivant :
+En la [sección 2.1](#gitstatus), aprendimos que el comando `git status` se utiliza para mostrar las modificaciones realizadas en los archivos en la copia de trabajo `tp1`. Después de las modificaciones que acabamos de hacer en el archivo README.md, el comando debería mostrar el siguiente mensaje:
 
 ```shell
 $:> git status
@@ -189,13 +195,13 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Le message "Untracked files" montre que nous venons de modifier un fichier (README.md) dans notre copie de travail et que notre dépôt git ne suit pas encore ce fichier. Pour sélectionner (_stage_) le fichier README.md, tapez :
+El mensaje "Untracked files" muestra que acabamos de modificar un archivo (README.md) en nuestra copia de trabajo y nuestro repositorio git aún no está siguiendo este archivo. Para seleccionar (_stage_) el archivo README.md, escribe:
 
 ```shell
 $:> git add README.md
 ```
 
-La commande `git add README.md` permettra à git de garder une trace des modifications apportées à ce fichier à partir de maintenant. Pour voir le changement d'état du fichier README.md dans git, tapez: 
+El comando `git add README.md` permitirá a git hacer un seguimiento de las modificaciones realizadas en este archivo a partir de ahora. Para ver el cambio de estado del archivo README.md en git, escribe:
 
 ```shell
 $:> git status
@@ -209,94 +215,96 @@ Changes to be committed:
 	new file:   README.md
 ```
 
-Vous pouvez voir que le fichier vient d'être sélectioné pour être inclus dans le dépôt git et qu'il ne reste plus qu'à valider cette inclusion. Pour cela, nous utilisons la commande `git commit`. Tapez :
+Puedes ver que el archivo acaba de ser seleccionado para ser incluido en el repositorio git y solo queda confirmar esa inclusión. Para hacerlo, utilizamos el comando `git commit`. Escribe:
 
 ```shell
-$:> git commit -m "Ajoute du fichier README.md"
-[master (root-commit) 23782d5] Ajoute du fichier README.md
- 1 file changed, 0 insertions(+), 0 deletions(-)
+$:> git commit -m "Agrega el archivo README.md"
+[master (root-commit) 23782d5] Agrega el archivo README.md
+ 1 archivo cambiado, 0 inserciones(+), 0 eliminaciones(-)
  create mode 100644 README.md
 ```
 
-Maintenant, le fichier README.md dans la copie de travail `tp1` (_working directory_) est synchronisé avec le dépôt. **Nous venons d'enregistrer une première version du fichier !** La commande `git status` devrait nous donner la sortie suivante :
+Ahora, el archivo README.md en la copia de trabajo `tp1` (_working directory_) está sincronizado con el repositorio. **¡Hemos registrado la primera versión del archivo!** La salida del comando `git status` debería ser la siguiente:
+
 
 ```shell
 $:> git status
 On branch master
 nothing to commit, working directory clean
 ```
-<a id='sequencelocal'></a>
-**Important :** ce que nous venons d'apprendre est **la séquence simple pour suivre les changements d'un fichier dans git** qui comprend les étapes suivantes :
 
-1. Modification d'un fichier existant ou création d'un nouveau fichier.
-2. `git status` pour voir les fichiers à inclure dans le dépôt git.
-3. `git add <fichier>` pour sélectioner le fichier (_stage_) que nous voulons suivre dans le dépôt git.
-4. `git commit -m "Ajoutez ici un petit commentaire pour décrire ce commit"` pour valider/enregistrer les changements dans le dépôt git.
-5. Enfin, la commande `git log` nous permet de voir toutes les différentes versions enregistrés dans notre dépôt.  Tapez `git log` pour voir le journal des différentes versions. Chaque entrée du log correspond à une version différent du fichier validée (_commit_). 
+<a id='sequencelocal'></a>
+**Importante:** lo que acabamos de aprender es **una secuencia simple para seguir los cambios de un archivo en git**, que incluye los siguientes pasos:
+
+1. Modificación de un archivo existente o creación de un nuevo archivo.
+2. `git status` para ver los archivos que se incluirán en el repositorio git.
+3. `git add <archivo>` para seleccionar el archivo (_stage_) que queremos seguir en el repositorio git.
+4. `git commit -m "Agrega aquí un breve comentario para describir este commit"` para validar/registrar los cambios en el repositorio git.
+5. Finalmente, el comando `git log` nos permite ver todas las diferentes versiones registradas en nuestro repositorio. Escribe `git log` para ver el registro de las diferentes versiones. Cada entrada del registro corresponde a una versión diferente del archivo validada (_commit_).
+
 
 <a id='readmeEtatsZonesActions'></a>
-### 3.2. Différencier  3 états / 3 zones / 3 actions
+### 3.2. Diferenciar 3 Estados / 3 Zonas / 3 Acciones
 
-Pour mieux comprendre le fonctionnement de git, c'est interessant de distinguer la difference entre état, zone et action. Voici un petit résumé :
+Para comprender mejor el funcionamiento de git, es interesante distinguir la diferencia entre estado, zona y acción. Aquí tienes un breve resumen:
 
-**Dans un dépôt GIT un fichier peut avoir 3 états différents :**
+**En un repositorio GIT, un archivo puede tener 3 estados diferentes:**
 
-   * Modifié (modified): il a des modification locales, il va falloir le sélectionner (stage) pour ensuite valider (commit) ses modifications.
-   * Sélectionné (staged): ses modification ont été sélectionnées (staged) pour être validées (commited).
-   * Validé (commited): il est synchrone avec le dépôt et ne requière pas de validation.
+   * Modificado (modified): tiene modificaciones locales, que deben ser seleccionadas (staged) y luego validadas (commit).
+   * Seleccionado (staged): sus modificaciones han sido seleccionadas (staged) para ser validadas (commited).
+   * Validado (commited): está sincronizado con el repositorio y no requiere validación.
 
-**Ces états correspondent à 3 zones dans un GIT :**
+**Estos estados corresponden a 3 zonas en GIT:**
 
-   * La copie de travail (directory), c’est le système de fichier local, zone où les fichiers sont modifiés.
-   * La zone de sélection (staging area).
-   * Le dépôt où les modifications sont enregistrées sous forme de validations (commits).
+   * La copia de trabajo (working directory), que es el sistema de archivos local, donde se modifican los archivos.
+   * La zona de selección (staging area).
+   * El repositorio, donde las modificaciones se registran como confirmaciones (commits).
 
-**Le passage entre ses 3 états se fait par 3 actions:**
+**La transición entre estos 3 estados se realiza mediante 3 acciones:**
 
-   * Sélection (stage) qui sélectionne les fichier pour la validation(commande : `git add`).
-   * Validation (commit) qui crée le commit et l’envoie dans le dépôt (commande: `git commit`).
-   * Récupération (checkout) qui récupère un instantané (snapshot) depuis le dépôt vers la copie de travail (commande : `git checkout`). Nous verrons cette commande plus tard.
+   * Selección (stage), que selecciona los archivos para la validación (comando: `git add`).
+   * Validación (commit), que crea el commit y lo envía al repositorio (comando: `git commit`).
+   * Recuperación (checkout), que recupera un snapshot desde el repositorio hacia la copia de trabajo (comando: `git checkout`). Veremos este comando más adelante.
 
 
-### Exercice
-> 1. Pour nous assurer que nous avons appris la séquence de fonctionnement simple de git, nous allons mettre à jour le fichier README.md avec un compte-rendu de ce cours jusqu'à présent. Assurez-vous que les modifications sont sélectionnées et valides dans le dépôt git. 
+### Ejercicio
+> 1. Para asegurarnos de que hemos aprendido la secuencia de funcionamiento simple de git, vamos a actualizar el archivo README.md con un informe de este curso hasta ahora. Asegúrate de que las modificaciones estén seleccionadas y validadas en el repositorio git.
 
-[Haut de la page](#TP1)
-
+[Arriba de la página](#TP1)
 --------
    
 <a id='programmeJava'></a>
-## 4. Gestion de version d'un programme Java 
+## 4. Gestión de Versiones de un Programa Java
 
-Bien que git permette la gestion des versions de tout type de fichier (par exemple, c'est le cas du fichier texte README.md), la plupart du temps nous allons l'utiliser pour gérer les versions d'un programme. Dans cet exercice pratique, nous allons créer un petit projet Java sur le monde fascinant des crypto-monnaies.
+Aunque git permite la gestión de versiones de cualquier tipo de archivo (por ejemplo, como el archivo de texto README.md), la mayoría de las veces lo utilizaremos para gestionar las versiones de un programa. En este ejercicio práctico, vamos a crear un pequeño proyecto Java sobre el fascinante mundo de las criptomonedas.
 
-Pour commencer à développer notre projet, dans le répertoire `tp1` nous allons créer un répertoire `src` qui contiendra les sources dudit projet dans lequel nous allons créer un premier fichier java vide à l'aide de la commande `touch Cryptomonnaie.java`. La structure du répertoire `tp1` doit être la suivante :
+Para empezar a desarrollar nuestro proyecto, en el directorio `tp1` crearemos un directorio `src` que contendrá las fuentes del proyecto, y dentro de este directorio crearemos un primer archivo Java vacío utilizando el comando `touch Criptomoneda.java`. La estructura del directorio `tp1` debería verse de la siguiente manera:
 
 ```shell
-$:~/courseGIT/tp1> tree
+$:~/cursoGIT/tp1> tree
 .
 ├── README.md
 └── src
-    └── Cryptomonnaie.java
+    └── Criptomoneda.java
 ```
 
-De manière simplifiée, les principaux attributs d'une crypto-monnaie sont le nom et la valeur actuelle de son jeton (_token_). Editez le fichier Cryptomonnaie.java avec le code suivant :
+De forma simplificada, los principales atributos de una criptomoneda son el nombre y el valor actual de su ficha (_token_). Edita el archivo Criptomoneda.java con el siguiente código:
 
 ```java
-public class Cryptomonnaie{
-    private String nom;
-    private double valeurDeJeton; // Imaginons en euros
+public class Criptomoneda{
+    private String nombre;
+    private double valorDeToken; // Imaginemos en euros
 
-    public Cryptomonnaie(String nom, double valeurDeJeton){
-        this.nom = nom;
-        this.valeurDeJeton = valeurDeJeton;
+    public Cryptomonnaie(String nombre, double valorDeToken){
+        this.nombre = nombre;
+        this.valorDeToken = valorDeToken;
     }
 }
 ```
 
-À l'aide des commandes git que nous avons apprises, ajoutez et validez le fichier java au dépôt git avec le message `"Première version du fichier Cyptomonnaie.java"`.
- 
-Maintenant, la commande `git log` devrait afficher des informations similaires à ce qui suit :
+Con las órdenes de git que hemos aprendido, añade y valida el archivo Java en el repositorio git con el mensaje "Primera versión del archivo Cyptomonnaie.java".
+
+Ahora, el comando `git log` debería mostrar información similar a la siguiente:
 
 ```shell
 $:~/courseGIT/tp1> git log
@@ -304,69 +312,69 @@ commit e6612def94728cfcb8468e5430edec6b983e5a58
 Author: author <author@example.com>
 Date:   Thu Apr 29 14:22:12 2021 +0200
 
-    Première version du fichier Cyptomonnaie.java
+    Primera versión del archivo Cyptomonnaie.java
 
 commit 23782d55677ffc4a6ad97adc45c484e9b93671a6
 Author: author <author@example.com>
 Date:   Wed Apr 28 11:52:14 2021 +0200
 
-    Ajoute du fichier README.md
+    Agrega el archivo README.md
 
 ```
 
 <a id='gitignore'></a>
-### 4.1. Creation du fichier `.gitignore`
+### 4.1. Creación del archivo `.gitignore`
 
-Une fois qu'un fichier java a été créé, il est normal que nous procédions à sa compilation. Dans le répertoire `src`, compilons le fichier pour nous assurer qu'il n'y a pas d'erreurs :
+Una vez que se ha creado un archivo Java, es normal proceder a su compilación. En el directorio `src`, compilamos el archivo para asegurarnos de que no haya errores:
 
 ```shell
-$:~/courseGIT/tp1/src> javac Cryptomonnaie.java
+$:~/cursoGIT/tp1/src> javac Criptomoneda.java
 ```
 
-Comme nous le savons, la compilation en java génère un nouveau fichier .class qui apparaîtra dans la zone de copie de travail (voir `git status` ci-dessous). 
-
+Como sabemos, la compilación en Java genera un nuevo archivo .class que aparecerá en la zona de copia de trabajo (ver git status a continuación).
 
 ```shell
-$:~/courseGIT/tp1/src> git status
+$:~/cursoGIT/tp1/src> git status
 On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
-        Cryptomonnaie.class
+        Criptomoneda.class
 
 nothing added to commit but untracked files present (use "git add" to track)
 
 ```
 
-La grande question que nous pouvons nous poser est la suivante : **que devons-nous faire avec ce fichier ? devrions-nous le gérer avec git aussi ?** La réponse à cette question est **non** : normalement, nous n'enregistrerons pas les modifications apportées aux fichiers générés à partir du code disponible. En d'autres termes, si nous avons un fichier java, nous n'avons pas besoin de sauvegarder le .class respectif car il s'agit d'informations redondantes et il s'agit également d'un fichier non modifiable. Cependant, il est un peu ennuyeux de voir un fichier .class apparaître à chaque fois que nous tapons la commande `git status`. 
+La gran pregunta que podemos hacernos es la siguiente: **¿qué debemos hacer con este archivo? ¿deberíamos gestionarlo también con git?** La respuesta a esta pregunta es **no**: normalmente, no registraremos las modificaciones realizadas en los archivos generados a partir del código disponible. En otras palabras, si tenemos un archivo Java, no necesitamos guardar el archivo .class respectivo, ya que se trata de información redundante y también es un archivo no editable. Sin embargo, es un poco molesto ver un archivo .class aparecer cada vez que ejecutamos el comando `git status`.
 
-Git offre une solution élégante à ce problème : nous pouvons générer une liste avec les types de fichiers que nous voulons que git ignore. L'emplacement de cette liste sera dans le fichier `.gitignore` que nous allons placer dans le répertoire racine de notre dépôt. 
+Git ofrece una solución elegante a este problema: podemos generar una lista con los tipos de archivos que queremos que git ignore. El lugar para esta lista será el archivo `.gitignore`, que colocaremos en el directorio raíz de nuestro repositorio.
 
-Dans le répertoire `tp1` tapez :
+En el directorio `tp1`, escribe:
  
 ```shell
-$:~/courseGIT/tp1> touch .gitignore
+$:~/cursoGIT/tp1> touch .gitignore
 ```
 
-Tapez maintenant `git status` : Que se passe-t-il ? quels fichiers ne sont pas encore sélectionnés (_stage_) ? 
+Ahora, escribe `git status`: ¿Qué sucede? ¿Qué archivos aún no están seleccionados (_stage_)?
 
-Éditez le fichier `.gitignore` avec votre éditeur de texte préféré et ajoutez la ligne suivante : 
+Edita el archivo `.gitignore` con tu editor de texto preferido y agrega la siguiente línea:
+
 
 ```
 *.class
 ```
 
-Puis sélectionnez et validez le fichier :
+Luego, selecciona y valida el archivo:
 
 ```shell
-$:~/courseGIT/tp1> git add .gitignore
-$:~/courseGIT/tp1> git commit -m ".gitignore ajouté"
+$:~/cursoGIT/tp1> git add .gitignore
+$:~/cursoGIT/tp1> git commit -m ".gitignore añadido"
 ```
-Et maintenant : que se passe-t-il si nous tapons `git status`? **Vous pouvez tirer vos propres conclusions.**
+Y ahora, ¿qué sucede si escribimos `git status`? **Puedes sacar tus propias conclusiones.**
 
-### Exercices
-> 1. Suivez toutes les étapes précédentes de la section 4.
-2. Complétez le fichier .gitignore avec les lignes suivantes et validez-le dans git.
+### Ejercicios
+> 1. Sigue todos los pasos anteriores de la sección 4.
+2. Completa el archivo .gitignore con las siguientes líneas y válidalo en git.
 
 
 ```
@@ -385,10 +393,7 @@ Et maintenant : que se passe-t-il si nous tapons `git status`? **Vous pouvez tir
 ```
 
 
-[Haut de la page](#TP1)
-
+[Arriba de la página](#TP1)
 ----------
 
-**Fin du TP 1**
-
-
+**Fin del TP 1**
