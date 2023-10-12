@@ -295,7 +295,7 @@ public class Criptomoneda{
     private String nombre;
     private double valorDeToken; // Imaginemos en euros
 
-    public Cryptomonnaie(String nombre, double valorDeToken){
+    public Criptomoneda(String nombre, double valorDeToken){
         this.nombre = nombre;
         this.valorDeToken = valorDeToken;
     }
@@ -312,7 +312,7 @@ commit e6612def94728cfcb8468e5430edec6b983e5a58
 Author: author <author@example.com>
 Date:   Thu Apr 29 14:22:12 2021 +0200
 
-    Primera versión del archivo Cyptomonnaie.java
+    Primera versión del archivo Criptomoneda.java
 
 commit 23782d55677ffc4a6ad97adc45c484e9b93671a6
 Author: author <author@example.com>
