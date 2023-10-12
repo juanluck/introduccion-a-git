@@ -1,5 +1,7 @@
 # Introducción a la gestión de versiones con git {#introduction_main}
 
+[Enlace a la web de este curso](https://juanluck.github.io/introduccion-a-git)
+
 [Git](https://git-scm.com/) es una herramienta de **gestión de versiones de código abierto** inicialmente diseñada por [Linus Torvalds](https://es.wikipedia.org/wiki/Linus_Torvalds) para el mantenimiento del núcleo Linux, que se ha convertido en un estándar para el trabajo en grupo. Aunque no debemos olvidar que existen otros sistemas de gestión de versiones (por ejemplo, Subversion o Mercurial), Git es hoy en día la herramienta de gestión de versiones más utilizada. Este curso no pretende abordar los fundamentos teóricos de Git ni conceptos avanzados, es esencialmente una introducción práctica en la que en 10 minutos estaremos en condiciones de crear nuestro primer repositorio Git.
 
 El lector interesado puede consultar manuales más completos sobre Git, como el libro [Pro Git book](http://git-scm.com/book) de Scott Chacon ([CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0)), o [este curso en línea](https://pigne.org/teaching/general/lecture/Gestion-de-version-travail-en-equipe) ([CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0)), del cual este curso se inspiró en parte.
