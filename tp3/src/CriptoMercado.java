@@ -1,57 +1,54 @@
 import java.util.ArrayList;
 
-public class CryptoMarche {
+public class CriptoMercado {
 
-    private ArrayList<Portefeuille> portefeuilles;
-    private static CryptoMarche marche;
+    private ArrayList<Cartera> carteras;
+    private static CriptoMercado mercado;
 
-    private CryptoMarche(){
-        portefeuilles = new ArrayList<Portefeuille>();
+    private CriptoMercado(){
+        carteras = new ArrayList<Cartera>();
     }
 
-    public static CryptoMarche getInstance(){
-        if(marche == null){ marche = new CryptoMarche();}
-		return marche;
+    public static CriptoMercado getInstance(){
+        if(mercado == null){ mercado = new CriptoMercado();}
+		return mercado;
     }
 
-    public void ajouter(Portefeuille p){
-        portefeuilles.add(p);
+    public void add(Cartera c){
+        carteras.add(c);
     }
 
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
-     * du propriétaire et calcule son capital en euros. 
-     * @param proprietare
-     * @return capital en euros du propriétare.
+     * Esta función busca en el mercado todas las carteras
+     * del propietario y calcula su capital en euros.
+     * @param proprietario
+     * @return capital en euros del propietario.
      */
-    public double capitalEnEuros(String proprietaire){
+    public double capitalEnEuros(String propietario){
         /**
-			FONCTION À IMPLEMENTER
+			FUNCIONALIDAD A IMPLEMENTAR
         **/
-
         return 0;
     }
 
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
-     * d'un type de devise et calcule le volume total de capital de 
-     * cette devise sur le marché 
-     * @param monnaie
-     * @return capital total en circulation de la cryptomonnaie (en euros).
+     * Esta función busca en el mercado todas las carteras
+     * de un tipo de moneda y calcula el volumen total de capital de
+     * esa moneda en el mercado.
+     * @param moneda
+     * @return capital total en circulación de la criptomoneda (en euros).
      */
-    public double capitalMonneaie(Cryptomonnaie monnaie){
+    public double capitalMoneda(Criptomoneda moneda){
         /**
-			FONCTION À IMPLEMENTER
+			FUNCIONALIDAD A IMPLEMENTAR
         **/
-
         return 0;
-
     }
 
     @Override
     public String toString() {
         String ret = "";
-        for(Portefeuille p : this.portefeuilles){
+        for(Cartera p : this.carteras){
             ret += p.toString() + "\n";
         }
         return ret;

@@ -1,81 +1,81 @@
-public class Portefeuille {
-  private Cryptomonnaie monnaie;
-  private double montant; // Soit le nombre de jetons
-  private String proprietaire;
+public class Cartera {
+  private Criptomoneda moneda;
+  private double montante; // El número de tokens
+  private String propietario;
 
-  public Portefeuille(Cryptomonnaie monnaie, double montant, String proprietaire){
-      this.monnaie      = monnaie;
-      this.montant      = montant;
-      this.proprietaire = proprietaire;
+  public Cartera(Criptomoneda moneda, double montante, String propietario){
+      this.moneda       = moneda;
+      this.montante     = montante;
+      this.propietario  = propietario;
   }
 
   /**
-   * Cette fonction vous permet de transférer des devises du portefeuille actuel 
-   * vers le portefeuille de destination pour le montant indiqué. Le type de devise 
-   * (nom du Jeton) doit être le même entre les deux portefeuilles et le montant 
-   * du portefeuille actuel doit être supérieur ou égal à celui indiqué.
-   * @param destination 
-   * @param montantJetons
-   * @return Vrai si la transaction a été effectuée, faux sinon.  
+   * Esta función te permite transferir monedas desde la cartera actual
+   * a la cartera de destino por la cantidad indicada. El tipo de moneda
+   * (nombre del token) debe ser el mismo en ambas carteras y la cantidad
+   * en la cartera actual debe ser mayor o igual a la indicada.
+   * @param destino
+   * @param cantidadTokens
+   * @return true si la transacción se realizó, false en caso contrario.
    */
-  public boolean transfertDevise (Portefeuille destination, double montantJetons){
+  public boolean transferenciaDivisa (Cartera destino, double cantidadTokens){
       /**
-           FONCTION À IMPLEMENTER
+           FUNCIONALIDAD A IMPLEMENTAR
 	  **/
       return false;
   }
 
   /**
-   * Cette fonction vous permet d'acheter des jetons de la 
-   * crypto-devise en fonction de leur valeur en euros. 
-   * Le résultat est l'augmentation des jetons de la crypto-monnaie.
-   * @param montantEuros Valeur d'achat en euros 
-   * @return true si le montant en euros est supérieur ou égal à 0 
+   * Esta función te permite comprar tokens de la criptomoneda
+   * en función de su valor en euros. El resultado es el aumento 
+   * de los tokens de la criptomoneda.
+   * @param cantidadEuros Valor de compra en euros
+   * @return true si el monto en euros es mayor o igual a 0
    */
-  public boolean achatDevise (double montantEuros){
+  public boolean compraDivisa (double cantidadEuros){
 	/**
-           FONCTION À IMPLEMENTER
+           FUNCIONALIDAD A IMPLEMENTAR
 	**/
     return false;
   }
-
+  
   /**
-   * Valide si le proprietaire passé en parametre est celui
-   * qui as le portefeuille
-   * @param proprietaire
-   * @return true si les nom du propriétaire est correct
+   * Valida si el propietario pasado en argumento es el 
+   * mismo que posee la cartera
+   * @param propietario
+   * @return true si el nombre del propietario es correcto
    */
-  public boolean estProprietaire (String proprietaire){
-        return (proprietaire.equals(this.proprietaire))?true:false;
+  public boolean esPropietario (String propietario){
+        return (propietario.equals(this.propietario))?true:false;
   }
 
   /**
    * 
-   * @return La valeur en euros du Portefeuille. 
-   * Autrement dit, le monant de jetons multiplié par la valeur des jetons. 
+   * @return El valor en euros de la cartera. 
    */
-  public double valeurEnEuros(){
-      return this.montant * this.monnaie.getValeurDeJeton();
+   
+  public double valorEnEuros(){
+      return this.montante * this.moneda.getValorDeToken();
   }
 
-  public String getProprietaire() {
-      return proprietaire;
+  public String getPropietario() {
+      return propietario;
   }
 
-  public Cryptomonnaie getMonnaie() {
-      return monnaie;
+  public Criptomoneda getMoneda() {
+      return moneda;
   }
 
-  public double getMontant() {
-      return montant;
+  public double getMontante() {
+      return montante;
   }
 
   @Override
   public String toString() {
-      return String.format("%10s",proprietaire) + " : "
-           + String.format("%10.1f", montant)   + " x " 
-           + this.monnaie.toString()            + " = "
-           + String.format("%10.1f", valeurEnEuros());
+      return String.format("%10s",propietario) + " : "
+           + String.format("%10.1f", montante)   + " x " 
+           + this.moneda.toString()            + " = "
+           + String.format("%10.1f", valorEnEuros());
   }
 
 }

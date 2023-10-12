@@ -331,7 +331,7 @@ $:~/cursoGIT/tp3> ls
 3. Cada uno de ustedes creará una rama llamada **AthosCoin** y **PorthosCoin**, respectivamente. En esta rama, crearán su propia criptomoneda (sigan el ejemplo de AramisCoin a continuación). Una vez que hayan creado la moneda, fusionen la rama con la rama principal. Asegúrense luego de que las modificaciones estén sincronizadas en el repositorio de GitHub.
 
 ```java
-public class AramisCoin extends Cryptomonnaie{
+public class AramisCoin extends Criptomoneda{
     public AramisCoin(){
         super("ARA", 1000);
     }
