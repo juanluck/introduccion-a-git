@@ -161,13 +161,13 @@ $:~/cursoGIT/tp1> git remote add origin git@github.com:<tu_usuario>/tp1.git
 
 ```shell
 $:~/cursoGIT/tp1> git branch
-*main
+*master
 ```
 
 * Ahora solo falta crear el enlace de forma permanente y actualizar el repositorio remoto. Para hacerlo, escribamos el siguiente comando:
 
 ```shell
-$:~/cursoGIT/tp1> git push -u origin main
+$:~/cursoGIT/tp1> git push -u origin master
 ```
 
 * Mientras que el comando `git push` intenta escribir en el repositorio remoto, deberías ver mensajes similares a:

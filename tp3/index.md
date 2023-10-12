@@ -1,143 +1,141 @@
 <a id='TP3'></a>
-# TP 3 : Travailler en équipe sur un depôt github distant 
-[Retour à la page principale](../index.md)
+# TP 3: Trabajar en equipo en un repositorio remoto de GitHub
+[Volver a la página principal](../index.md)
 
-Il est temps de commencer à utiliser git pour le travail d'équipe. En fait, git a été initialement conçu dans ce but et c'est là qu'il peut nous montrer sa puissance. 
+Es hora de comenzar a usar Git para el trabajo en equipo. De hecho, Git fue diseñado inicialmente con este propósito, y aquí es donde puede mostrar su poder.
 
-Avant de continuer, nous allons nous organiser en binômes. Si vous êtes un nombre impair, un équipe peut être composé de trois personnes malgré le TP est conçu pour deux roles. 
+Antes de continuar, vamos a organizarnos en parejas. Si son un número impar, un equipo puede estar compuesto por tres personas a pesar de que el TP esté diseñado para dos roles.
 
-**Êtes-vous déjà constitué en équipe ?** Lancez une pièce et décidez qui assumera le rôle de <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> et qui assumera le rôle de <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> pour ce travail pratique. Si vous êtes trois, deux personnes seront regroupées dans le rôle d'<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>.
+**¿Ya han formado equipos?** Lanzad una moneda y decidid quién asumirá el papel de <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y quién asumirá el papel de <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> para este trabajo práctico. Si son tres personas, dos de ellas estarán agrupadas en el papel de <mark style="background-color:red;font-weight:bold; color:white">Athos</mark>.
 
  
 ---
 
-## Objectifs du TP 3
+## Objetivos del TP 3
 
-Le but de ce troisième TP  est de commencer à travailler en équipe sur github et développer un marché pour le projet de crypto-monnaie que nous avions déjà lancé. Dans ce TP, nous allons apprendre à : 
+El objetivo de este tercer TP es comenzar a trabajar en equipo en GitHub y desarrollar un mercado para el proyecto de criptomonedas que ya habíamos iniciado. En este TP, aprenderemos a:
 
->1. [Inviter des collaborateurs dans un dépôt personnel](#collaborateurs)
-2. [Développement d'un projet java en équipe](#projet)
-3. [Gérer des nouvelles fonctionnalités à l'aide des branches](#branch)
+> 1. [Invitar colaboradores a un repositorio personal](#collaborateurs)
+2. [Desarrollar un proyecto Java en equipo](#projet)
+3. [Gestionar nuevas funcionalidades utilizando ramas (branches)](#branch)
 
-   
-
-[Haut de la page](#TP3)
+[Regresar al inicio de la página](#TP3)
 
 ---
 
 <a id='collaborateurs'></a>
-## 1. Inviter des collaborateurs dans un dépôt personnel
+## 1. Invitar colaboradores a un repositorio personal
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>:
 
-: * Pour commencer, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> va créer un nouveau dépôt dans son compte github appelé `tp3` (<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> fera bien de regarder et de commenter avec <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> comment cela est fait). Nous allons remplir le formulaire de la même manière que nous l'avons fait avec le dépôt `tp2`.
+* Para comenzar, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> creará un nuevo repositorio en su cuenta de GitHub llamado `tp3` (<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> debería observar y comentar con <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> cómo se hace). Llenaremos el formulario de la misma manera que lo hicimos con el repositorio `tp2`.
 
-: * Une fois le dépôt créé, cliquez sur **Settings** :
+* Una vez creado el repositorio, hagan clic en **Configuración**:
 
-![Settings](./images/settings.png)
+![Configuración](./images/settings.png)
 
-: * ensuite sur **Manage access** et puis sur **Invite a collaborator** :
+* Luego en **Administrar acceso** y después en **Invitar a un colaborador**:
 
-![Manage access](./images/inviteCollaborator.png)
+![Administrar acceso](./images/inviteCollaborator.png)
 
-: * demandez à <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> son nom d'utilisateur sur github et invitez-le dans votre dépôt :
+* Soliciten el nombre de usuario de GitHub de <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> e invítenlo a su repositorio:
 
-![Manage access](./images/invitePorthos.png)
+![Administrar acceso](./images/invitePorthos.png)
 
-<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
 
-: * <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>  doit aller dans sa boîte email pour recevoir l'invitation d'<mark style="background-color:red;font-weight:bold; color:white">Athos</mark> à collaborer dans le dépôt `tp3` et l'accepter.
+* <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> debe ir a su correo electrónico para recibir la invitación de <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> para colaborar en el repositorio `tp3` y aceptarla.
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
 
-: * Chacun de vous peut faire un clone du projet en se plaçant dans le répertoire `courseGIT` :
+* Cada uno de ustedes puede clonar el proyecto ubicándose en el directorio `cursoGIT`:
 
 ```shell
-$:~/courseGIT> git clone git@github.com:<utilisateur_de_athos>/tp3.git
+$:~/cursoGIT> git clone git@github.com:<tu_usuario>/tp3.git
 ```
 
-* Si vous l'avez bien fait, votre répertoire `courseGIT` devrait contenir trois répertoires comme indiqué ci-dessous :
+* Si lo has hecho correctamente, tu directorio `cursoGIT` debería contener tres directorios como se muestra a continuación:
 
 ```shell
-$:~/courseGIT> ls
+$:~/cursoGIT> ls
 tp1 tp2 tp3
 ```
 
-### Exercices
->1. <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> : allez dans le répertoire `tp3` et mettez à jour tous les fichiers avec ceux du répertoire `tp2` (README.md et src/Cryptomonnaie.java) (surtout ne copiez pas le répertoire caché .git). Synchronisez les dépôts local et distant.
-2.  <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> : après que <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> vous en informe, faissez un `git pull` depuis votre répertoire local `tp3` pour synchroniser les changements.
-3. Les deux : vérifiez que tous les dépôts sont bien synchronisés (ce qui est sur github correspond bien à ce que vous avez dans votre répertoire local).
+### Ejercicios
+> 1. <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>: ve al directorio `tp3` y actualiza todos los archivos con los del directorio `tp2` (README.md y src/Criptomoneda.java) (asegúrate de no copiar el directorio oculto .git). Sincroniza los repositorios local y remoto.
+2. <mark style="background-color:red;font-weight:bold; color:white">Athos</mark>: después de que <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> te informe, realiza un `git pull` desde tu directorio local `tp3` para sincronizar los cambios.
+3. Ambos: verifica que todos los repositorios estén sincronizados correctamente (lo que está en GitHub coincide con lo que tienes en tu directorio local).
 
-[Haut de la page](#TP3)
+[Regresar al inicio de la página](#TP3)
 
 -----
 
 <a id='projet'></a>
-## 2. Développement d'un projet java en équipe
+## 2. Desarrollo de un proyecto Java en equipo
 
-Git a été principalement conçu pour gérer le travail en équipe. Revenons au projet Crypto-monnaie pour lequel nous allons créer un marché avec différents portefeuilles. Avant de commencer, décrivons certains concepts :
+Git fue diseñado principalmente para gestionar el trabajo en equipo. Volvamos al proyecto de Criptomonedas, para el cual crearemos un mercado con diferentes carteras. Antes de comenzar, describamos algunos conceptos:
 
-**Portefeuille :**
-: Un portefeuille cryptographique est un portefeuille virtuel dans lequel un utilisateur peut stocker un certain nombre de jetons d'une crypto-monnaie. Cet utilisateur peut posséder plusieurs portefeuilles, mais chaque portefeuille ne peut contenir qu'un seul type de crypto-monnaie. Un portefeuille permet des achats de jetons ainsi qu'un transfert de jetons entre portefeuilles si le type de crypto-monnaie est le même. 
+**Cartera:**
+: Una cartera criptográfica es una cartera virtual en la que un usuario puede almacenar una cierta cantidad de tokens de una criptomoneda. Este usuario puede poseer varias carteras, pero cada cartera solo puede contener un tipo de criptomoneda. Una cartera permite compras de tokens y transferencia de tokens entre carteras si el tipo de criptomoneda es el mismo.
 
-**Marché :**
-: Le marché est un registre avec une série de portefeuilles cryptographiques. En principe, le marché nous permet de poser certaines questions telles que quel est le capital total d'un utilisateur avec plusieurs portefeuilles ou quel est le capital total en circulation d'une crypto-monnaie spécifique.
+**Mercado:**
+: El mercado es un registro con una serie de carteras criptográficas. En principio, el mercado nos permite hacer ciertas preguntas, como cuál es el capital total de un usuario con varias carteras o cuál es el capital total en circulación de una criptomoneda específica.
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
 
-: * Avant de continuer, assurez-vous que votre dépôt `tp3` est parfaitement synchronisé.
+* Antes de continuar, asegúrense de que su repositorio `tp3` esté perfectamente sincronizado.
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>:
 
-: * Copiez les fichiers suivants dans le répertoire `tp3/src`, validez-les dans le dépôt local et distant :
-   * [CryptoMarche.java](./src/CryptoMarche.java)
-   * [Portefeuille.java](./src/Portefeuille.java)
-   * [TestCryptoMarche.java](./src/TestCryptoMarche.java) 
-   
-<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
-: * Assurez-vous d'obtenir la dernière version du dépôt distant. 
+* Copia los siguientes archivos en el directorio `tp3/src`, valida en el repositorio local y remoto:
+   * [CriptoMercado.java](./src/CriptoMercado.java)
+   * [Cartera.java](./src/Cartera.java)
+   * [TestCriptoMercado.java](./src/TestCriptoMercado.java) 
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
+* Asegúrate de obtener la última versión del repositorio remoto.
 
-: * Votre mission sera de compléter la fonctionnalité qui manque pour compléter notre application de marché de crypto-monnaie. <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> se concentrera sur l'implementation de la classe **Portefeuille.java** et <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> sur l'implementation de la classe **CryptoMarche.java**. **L'objectif est de faire passer les tests décrits dans le fichier TestCryptoMarche.java (il n'est pas permis de modifier ce fichier).**
-* Avant de continuer, compilez tout le code et assurez-vous qu'il n'y a pas d'erreurs de compilation. 
-* Exécutez en ligne de commande `java TestCryptoMarche`. La réponse devrait être la suivante :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
+
+* Su misión será completar la funcionalidad que falta para terminar nuestra aplicación de mercado de criptomonedas. <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> se enfocará en la implementación de la clase **Cartera.java** y <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> en la implementación de la clase **CriptoMercado.java**. **El objetivo es pasar las pruebas descritas en el archivo TestCriptoMercado.java (no se permite modificar este archivo).**
+* Antes de continuar, compilen todo el código y asegúrense de que no haya errores de compilación.
+* Ejecuten en la línea de comandos `java TestCriptoMercado`. La respuesta debería ser la siguiente:
 
 ```shell
-Test Portefeuille transfertDevise        ... FAIL
-Test Portefeuille achatDevise            ... FAIL
-Test CryptoMarche capitalEnEuros         ... FAIL
-Test CryptoMarche capitalMonneaie        ... FAIL
+Test Cartera transferenciaDivisa          ... FAIL
+Test Cartera compraDivisa                 ... FAIL
+Test CriptoMercado capitalEnEuros         ... FAIL
+Test CriptoMercado capitalMoneda          ... FAIL
 ```
 
 <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> :
 
-: * Votre tâche consiste à terminer l'implémentation des deux fonctions suivantes de la classe **CryptoMarche.java**. Suivez la spécification dans les commentaires pour les compléter. Une fois terminé, synchronisez vos modifications avec le dépôt local et distant. 
+* Su tarea consiste en completar la implementación de las dos siguientes funciones en la clase **CriptoMercado.java**. Sigan las especificaciones en los comentarios para completarlas. Una vez terminado, sincronicen sus cambios con el repositorio local y remoto.
 
 ```java
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
-     * du propriétaire et calcule son capital en euros. 
-     * @param proprietare
-     * @return capital en euros du propriétare.
+     * Esta función busca en el mercado todas las carteras
+     * del propietario y calcula su capital en euros.
+     * @param proprietario
+     * @return capital en euros del propietario.
      */
-    public double capitalEnEuros(String proprietaire){
+    public double capitalEnEuros(String propietario){
         /**
-			FONCTION À IMPLEMENTER
+			FUNCIONALIDAD A IMPLEMENTAR
         **/
         return 0;
     }
 
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
-     * d'un type de devise et calcule le volume total de capital de 
-     * cette devise sur le marché 
-     * @param monnaie
-     * @return capital total en circulation de la cryptomonnaie (en euros).
+     * Esta función busca en el mercado todas las carteras
+     * de un tipo de moneda y calcula el volumen total de capital de
+     * esa moneda en el mercado.
+     * @param moneda
+     * @return capital total en circulación de la criptomoneda (en euros).
      */
-    public double capitalMonneaie(Cryptomonnaie monnaie){
+    public double capitalMoneda(Criptomoneda moneda){
         /**
-			FONCTION À IMPLEMENTER
+			FUNCIONALIDAD A IMPLEMENTAR
         **/
         return 0;
     }
@@ -146,141 +144,144 @@ Test CryptoMarche capitalMonneaie        ... FAIL
 
  <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
 
- : * Votre tâche consiste à terminer l'implémentation des deux fonctions suivantes de la classe **Portefeuille.java**. Suivez la spécification dans les commentaires pour les compléter. Une fois terminé, synchronisez vos modifications avec le dépôt local et distant. 
+* Su tarea consiste en completar la implementación de las dos siguientes funciones en la clase **Cartera.java**. Sigan las especificaciones en los comentarios para completarlas. Una vez terminado, sincronicen sus cambios con el repositorio local y remoto.
  
 ```java
   /**
-   * Cette fonction vous permet de transférer des devises du portefeuille actuel 
-   * vers le portefeuille de destination pour le montant indiqué. Le type de devise 
-   * (nom du Jeton) doit être le même entre les deux portefeuilles et le montant 
-   * du portefeuille actuel doit être supérieur ou égal à celui indiqué.
-   * @param destination 
-   * @param montantJetons
-   * @return true si la transaction a été effectuée, false sinon.  
+   * Esta función te permite transferir monedas desde la cartera actual
+   * a la cartera de destino por la cantidad indicada. El tipo de moneda
+   * (nombre del token) debe ser el mismo en ambas carteras y la cantidad
+   * en la cartera actual debe ser mayor o igual a la indicada.
+   * @param destino
+   * @param cantidadTokens
+   * @return true si la transacción se realizó, false en caso contrario.
    */
-  public boolean transfertDevise (Portefeuille destination, double montantJetons){
+  public boolean transferenciaDivisa (Cartera destino, double cantidadTokens){
       /**
-           FONCTION À IMPLEMENTER
+           FUNCIONALIDAD A IMPLEMENTAR
 	  **/
       return false;
   }
 
   /**
-   * Cette fonction vous permet d'acheter des jetons de la 
-   * crypto-devise en fonction de leur valeur en euros. 
-   * Le résultat est l'augmentation des jetons de la crypto-monnaie.
-   * @param montantEuros Valeur d'achat en euros 
-   * @return true si le montant en euros est supérieur ou égal à 0 
+   * Esta función te permite comprar tokens de la criptomoneda
+   * en función de su valor en euros. El resultado es el aumento 
+   * de los tokens de la criptomoneda.
+   * @param cantidadEuros Valor de compra en euros
+   * @return true si el monto en euros es mayor o igual a 0
    */
-  public boolean achatDevise (double montantEuros){
+  public boolean compraDivisa (double cantidadEuros){
 	/**
-           FONCTION À IMPLEMENTER
+           FUNCIONALIDAD A IMPLEMENTAR
 	**/
     return false;
   }
 ```
 
-### Exercice
->1. Réalisez les étapes précédentes. Une fois les dépôts synchronisés, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> doivent compiler et lancer le test `java TestCryptoMarche`. Le résultat doit être le suivant :
+### Ejercicio
+> 1. Realiza los pasos anteriores. Una vez que los repositorios estén sincronizados, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> deben compilar y ejecutar la prueba `java TestCriptoMercado`. El resultado debe ser el siguiente:
 
 ```shell
-Test Portefeuille transfertDevise        ... OK
-Test Portefeuille achatDevise            ... OK
-Test CryptoMarche capitalEnEuros         ... OK
-Test CryptoMarche capitalMonneaie        ... OK
+Test Cartera transferenciaDivisa          ... OK
+Test Cartera compraDivisa                 ... OK
+Test CriptoMercado capitalEnEuros         ... OK
+Test CriptoMercado capitalMoneda          ... OK
 ``` 
 
-[Haut de la page](#TP3)
+[Regresar al inicio de la página](#TP3)
 
 -----
 
 
 <a id='branch'></a>
-## 3. Gérer des nouvelles fonctionnalités à l'aide des branches
+## 3. Gestionar nuevas funcionalidades utilizando ramas
 
-Après avoir lancé le projet commun de marché de la crypto-monnaie, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> décident de s'attaquer à de nouveaux projets séparément. En particulier, chacun d'eux décide de lancer sa propre crypto-monnaie, respectivement : la **AthosCoin** et la **PorthosCoin**.  Afin d'intégrer ces devises dans le marché existant, nous allons utiliser **le concept de branches git.** 
+Después de lanzar el proyecto conjunto del mercado de criptomonedas, <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> deciden abordar nuevos proyectos por separado. En particular, cada uno de ellos decide lanzar su propia criptomoneda, respectivamente: **AthosCoin** y **PorthosCoin**. Para integrar estas monedas en el mercado existente, vamos a utilizar **el concepto de ramas en Git.**
 
-Jusqu'à présent, sans avoir besoin de le savoir, toutes les modifications que nous avons apportées au dépôt, nous l'avons fait sur une branche principale appelée **main** ou **master** (le nom dépend des paramètres de configuration ). Si vous tapez `git branch`, vous obtiendrez ce nom. Cependant, si vous souhaitez créer une nouvelle fonctionnalité dans votre code (pas forcément une fonctionnalité principale, mais une fonctionnalité supplémentaire), git vous permet de créer une nouvelle branche : une fourchette dans la séquence des changements. 
+Hasta ahora, sin necesidad de saberlo, todas las modificaciones que hemos realizado en el repositorio se han hecho en una rama principal llamada **main** o **master** (el nombre depende de la configuración). Si escribes `git branch`, obtendrás ese nombre. Sin embargo, si deseas crear una nueva funcionalidad en tu código (no necesariamente una funcionalidad principal, sino una funcionalidad adicional), Git te permite crear una nueva rama: un desvío en la secuencia de cambios.
 
-### 3.1. Tester le concept de branche avec un exemple simple 
+### 3.1. Probar el concepto de rama con un ejemplo sencillo
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
 
-: * Imaginons que nous voulions tester une nouvelle fonctionnalité dans notre projet que nous appellerons **"test"**. Cette fonctionnalité peut être intégrée directement dans la branche principale **main** (comme nous l'avons fait jusqu'à présent) ou nous pouvons la tester dans une branche séparée, vérifier si cela fonctionne puis l'intégrer dans la branche principale. Essayons ce deuxième cas.
+* Imaginemos que queremos probar una nueva funcionalidad en nuestro proyecto que llamaremos **"test"**. Esta funcionalidad puede integrarse directamente en la rama principal **main** (como hemos hecho hasta ahora) o podemos probarla en una rama separada, verificar si funciona y luego integrarla en la rama principal. Probemos este segundo caso.
 
-: * Commençons par lister toutes les branches actuelles de notre dépôt avec `git branch` puis voyons le contenu de cette branche :
+* Comencemos por listar todas las ramas actuales de nuestro repositorio con `git branch` y luego veamos el contenido de esa rama:
 
 ```shell
-$:~/courseGIT/tp3> git branch
+$:~/cursoGIT/tp3> git branch
 * main
-$:~/courseGIT/tp3> tree
+$:~/cursoGIT/tp3> tree
 .
 ├── README.md
 └── src
-    ├── CryptoMarche.java
-    ├── Cryptomonnaie.java
-    ├── Portefeuille.java
-    └── TestCryptoMarche.java
+    ├── CriptoMercado.java
+    ├── Criptomoneda.java
+    ├── Cartera.java
+    └── TestCriptoMercado.java
 ```
 
-* À l'aide de `git log`, nous pouvons également voir toutes les modifications que nous avons apportées jusqu'à présent. Passons certains paramètres à la commande pour la rendre plus lisible. 
+* Con `git log`, también podemos ver todas las modificaciones que hemos realizado hasta el momento. Pasemos algunos parámetros a la orden para que sea más legible.
 
 ```shell
 $:~/courseGIT/tp3> git log --graph --oneline --all --decorate --topo-order
-* 922b42b (HEAD -> main) Adding CryptoMarche
+* 922b42b (HEAD -> main) Adding CriptoMercado
 * 177514f (origin/main, origin/HEAD) Starting tp3++
 * e7820d8 Starting tp3
 * 455453c Initial commit
 ```
 
-* Il est temps de créer une nouvelle branche que nous appellerons **test**. Utilisez la commande suivante : 
+* Es hora de crear una nueva rama que llamaremos **test**. Utiliza el siguiente comando:
 
 ```shell
-$:~/courseGIT/tp3> git checkout -b test
+$:~/cursoGIT/tp3> git checkout -b test
 Switched to a new branch 'test'
 ```
-* L'option `-b` nous permet de dire à `checkout` que nous allons créer cette nouvelle branche. `checkout` nous fait changer de branche et aller dans la branche **test** (toutes les modifications apportées à partir de maintenant ne modifieront pas la branche **main** mais la branche **test**).  Pour nous assurer que nous sommes dans la branche **test**, tapez : 
+* La opción `-b` nos permite indicar a `checkout` que vamos a crear esta nueva rama. `checkout` nos cambia a la nueva rama y nos lleva a la rama **test** (todas las modificaciones realizadas a partir de ahora no afectarán a la rama **main** sino a la rama **test**). Para asegurarnos de que estamos en la rama **test**, escribimos:
 
 ```shell
-$:~/courseGIT/tp3> git branch
+$:~/cursoGIT/tp3> git branch
   main
 * test
 ```
-* L'étoile * indique qu'il s'agit de la branche de travail actuelle. Si nous voulons basculer entre les branches, nous pouvons utiliser la commande `git checkout <nom_branche>`. 
+* El asterisco * indica que esta es la rama de trabajo actual. Si deseamos cambiar entre ramas, podemos utilizar el comando `git checkout <nombre_rama>`.
 
-* Commençons par créer un nouveau fichier "test.txt" dans la branche **test**. Pour cela tapez :
+* Comencemos por crear un nuevo archivo "test.txt" en la rama **test**. Para hacerlo, escribe:
+
 
 ```shell
-$:~/courseGIT/tp3> touch test.txt
-$:~/courseGIT/tp3> ls
+$:~/cursoGIT/tp3> touch test.txt
+$:~/cursoGIT/tp3> ls
 README.md  src  test.txt
 ```
-* Et puis validons ces changements dans le dépôt local : 
+* Y luego validemos estos cambios en el repositorio local:
 
 ```shell
-$:~/courseGIT/tp3> git add test.txt
-$:~/courseGIT/tp3> git commit -m "fonction de test ajoutée "
+$:~/cursoGIT/tp3> git add test.txt
+$:~/cursoGIT/tp3> git commit -m "archivo test.txt añadido"
 ```
-* Oublions un instant la branche **test** et revenons à la branche principale **main**, puis tapez la commande `ls`: 
+* Olvidemos por un momento la rama **test** y volvamos a la rama principal **main**, luego escribe el comando `ls`:
 
 ```shell
-$:~/courseGIT/tp3> git checkout main
-$:~/courseGIT/tp3> ls
+$:~/cursoGIT/tp3> git checkout main
+$:~/cursoGIT/tp3> ls
 README.md  src
 ```
-**Que se passe-t-il? Où est passé le fichier _test.txt_ ?**
+**¿Qué ha sucedido? ¿Dónde ha ido el archivo _test.txt_?**
 
-: * Imaginez que nous suivions le développement au sein de la branche principale. Pour simuler cela, modifiez le fichier README.md en ajoutant la ligne: "Nous avons maintenant créé une nouvelle branche de test". Effectuer un `git add README.md` puis un `git commit -m "nouveau commit sur la branche principale"`. Tapez la commande :
+* Imagina que estamos siguiendo el desarrollo en la rama principal. Para simular esto, modifica el archivo README.md agregando la línea: "Hemos creado una nueva rama de prueba". Realiza un `git add README.md` y luego un `git commit -m "nuevo commit en la rama principal"`. Después escribe el comando:
+
 
 ```shell
 $:~/courseGIT/tp3> git log --graph --oneline --all --decorate --topo-order
-* f721aae (HEAD -> main) nouveau commit sur la branche principale
-| * bee45b2 (test) fonction de test ajoutée
+* f721aae (HEAD -> main) nuevo commit en la rama principal
+| * bee45b2 (test) archivo test.txt añadido
 |/  
-* 922b42b Adding CryptoMarche
+* 922b42b Adding CriptoMercado
 ```
 
-* Vous pouvez voir dans la sortie du log qu'une fourchette dans le code vient d'être produite.  Visuellement, il y a maintenant une branche principale et une branche de test :
+* Puedes ver en la salida del registro de cambios (log) que se ha producido una bifurcación en el código. Visualmente, ahora hay una rama principal y una rama de prueba:
+
 
 ```shell
 * (main)
@@ -289,45 +290,45 @@ $:~/courseGIT/tp3> git log --graph --oneline --all --decorate --topo-order
 * (main)
 ```
 
-### 3.2. Fusionner la branche de test dans la branche principale 
+### 3.2. Fusionar la rama de prueba en la rama principal
 
-<mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> :
+<mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark>:
 
-: * Travailler avec des branches serait inutile si à un certain moment on ne pouvait pas les fusionner. Imaginons que nous voulions ajouter la fonctionnalité **test** à notre branche principale. Pour ce faire, allons dans la branche principale :
+* Trabajar con ramas sería inútil si en algún momento no pudiéramos fusionarlas. Imaginemos que queremos agregar la funcionalidad **test** a nuestra rama principal. Para hacerlo, vamos a la rama principal con el siguiente comando:
 
 ```shell
-$:~/courseGIT/tp3> git checkout main
+$:~/cursoGIT/tp3> git checkout main
 ```
 
-* puis nous utiliserons la commande `git merge` qui nous permet de fusionner des branches :
+* y luego usamos el comando git merge, que nos permite fusionar ramas:
 
 ```shell
-$:~/courseGIT/tp3> git merge test
+$:~/cursoGIT/tp3> git merge test
 ```
 
-* pour visualiser la fusion, vous pouvez écrire la commande :
-
+* para visualizar la fusión, puedes escribir el siguiente comando:
 
 ```shell
-$:~/courseGIT/tp3> git log --graph --oneline --all --decorate --topo-order
+$:~/cursoGIT/tp3> git log --graph --oneline --all --decorate --topo-order
 *   454d00d (HEAD -> main) Merge branch 'test' into main
 |\  
-| * bee45b2 (test) fonction de test ajoutée
-* | f721aae nouveau commit sur la branche principale
+| * bee45b2 (test) archivo test.txt añadido
+* | f721aae nuevo commit en la rama principal
 |/  
-* 922b42b Adding CryptoMarche
+* 922b42b Adding CriptoMercado
 ```
-* **Que se passe-t-il si nous tapons la commande `ls` ?** : 
+
+* **¿Qué ocurre si escribimos el comando `ls`?**
 
 ```shell
-$:~/courseGIT/tp3> ls
+$:~/cursoGIT/tp3> ls
 ???
 ```
 
-### Exercices
->1. <mark style="background-color:red;font-weight:bold; color:white">Athos</mark>  et <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> faire les sections 3.1 et 3.2 séparément sans synchronisation avec le dépot github.
-2. Ensuite, supprimez le fichier test.txt du dépôt, pour cela, écrivez la commande `git rm test.txt` puis` git commit -m "test.txt supprimé"`.
-3. Chacun de vous va créer une branche appelée **AthosCoin** et **PorthosCoin** respectivement. Dans cette branche, vous allez créer votre crypto-monnaie (suivez l'exemple d'AramisCoin ci-dessous). Une fois la devise créée, fusionnez la branche avec la branche principale. Assurez-vous ensuite que les modifications sont synchronisées dans le dépôt github. 
+### Ejercicios
+1. <mark style="background-color:red;font-weight:bold; color:white">Athos</mark> y <mark style="background-color:green;font-weight:bold; color:white">Porthos</mark> realizarán las secciones 3.1 y 3.2 por separado sin sincronizar con el repositorio de GitHub.
+2. Luego, eliminen el archivo test.txt del repositorio. Para hacerlo, escriban el comando `git rm test.txt` y luego `git commit -m "test.txt eliminado"`.
+3. Cada uno de ustedes creará una rama llamada **AthosCoin** y **PorthosCoin**, respectivamente. En esta rama, crearán su propia criptomoneda (sigan el ejemplo de AramisCoin a continuación). Una vez que hayan creado la moneda, fusionen la rama con la rama principal. Asegúrense luego de que las modificaciones estén sincronizadas en el repositorio de GitHub.
 
 ```java
 public class AramisCoin extends Cryptomonnaie{
@@ -336,8 +337,8 @@ public class AramisCoin extends Cryptomonnaie{
     }
 }
 ```
-[Haut de la page](#TP3)
+[Regresar al principio de la página](#TP3)
 
 -----
 
-**Fin du TP 3**
+**Fin del TP3**
